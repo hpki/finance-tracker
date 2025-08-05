@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.*;
 
 
-import com.example.finance_tracker.model.User;
+import com.example.finance_tracker.model.Users;
 import com.example.finance_tracker.repository.UserRepository;
 
 @RestController
@@ -18,19 +18,32 @@ public class UserController {
         this.userRepository = userRepository;
     }
 
-    @GetMapping
-    public List<User> getAll() {
+   /* @GetMapping
+    public List<Users> getAll() {
         return userRepository.findAll();
     }
+    
 
     @PostMapping
-    public User create(@RequestBody User user) {
+    public Users create(@RequestBody Users user) {
         return userRepository.save(user);
     }
 
     @GetMapping("/{id}")
-    public User getById(@PathVariable Long id) {
+    public Users getById(@PathVariable Long id) {
         return userRepository.findById(id).orElseThrow();
+    }
+        */
+
+        @PostMapping
+    public Users create(@RequestBody Users user) {
+        System.out.println(">>> Получен пользователь: " + user.getUserName());
+        return userRepository.save(user);
+    }
+
+    @GetMapping
+    public List<Users> getAll() {
+        return userRepository.findAll();
     }
 
 }
