@@ -1,6 +1,6 @@
 package com.example.finance_tracker.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,7 +14,7 @@ import lombok.Setter;
 @Data
 @Getter
 @Setter
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Category {
     
 @Id

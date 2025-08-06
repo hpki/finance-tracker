@@ -1,8 +1,8 @@
 package com.example.finance_tracker.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.annotation.Generated;
+//import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,7 +14,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Users {
 
     @Id
