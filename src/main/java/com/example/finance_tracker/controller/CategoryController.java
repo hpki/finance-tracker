@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.finance_tracker.dto.CategoryDto;
+import com.example.finance_tracker.mapper.CategoryMapper;
 import com.example.finance_tracker.model.Category;
 import com.example.finance_tracker.repository.CategoryRepository;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/categories")
@@ -24,6 +28,27 @@ public class CategoryController {
         this.categoryRepository = categoryRepository;
     }
 
+    @PostMapping
+    public CategoryDto createCategory(@Valid @RequestBody CategoryDto categoryDto) {
+        Category category = CategoryMapper.toEntity(categoryDto);
+        Category savedCategory = categoryRepository.save(category);
+        return CategoryMapper.toDto(savedCategory);
+    }
+
+    @GetMapping
+    public List<CategoryDto> getAll() {
+        return categoryRepository.findAll().stream()
+                .map(CategoryMapper::toDto)
+                .toList();
+    }
+
+    @GetMapping("/{id}")
+    public CategoryDto getById(@PathVariable Long id) {
+        return categoryRepository.findById(id)
+                .map(CategoryMapper::toDto)
+                .orElseThrow();
+    }
+    /*  до введения DTO и Mapper для Category
     @GetMapping
     public List<Category> getAllCategories() {
         return categoryRepository.findAll();
@@ -52,4 +77,6 @@ public class CategoryController {
     public void deleteCategory(@PathVariable Long id) {
         categoryRepository.deleteById(id);
     }
+        */
+
 }
