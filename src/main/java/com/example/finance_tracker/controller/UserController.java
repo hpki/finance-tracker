@@ -55,4 +55,14 @@ public class UserController {
         return UsersMammer.toDto(user);
     }
 
+
+
+
+  /*  @GetMapping("/all")
+public List<Users> getAll() {
+    return userRepository.findAll();
 }
+*/
+
+}
+
